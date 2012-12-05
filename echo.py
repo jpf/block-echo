@@ -3,6 +3,16 @@ import json
 from flask import Flask, request
 app = Flask(__name__)
 
+@app.after_request
+def after(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Methods',
+                         'POST, GET, OPTIONS')
+    response.headers.add('Access-Control-Allow-Headers',
+                         'Content-Type')
+    return response
+
+
 @app.route("/", methods=['GET', 'POST', 'OPTIONS'])
 def hello():
     if request.method == 'GET':
