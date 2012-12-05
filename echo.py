@@ -33,7 +33,7 @@ def hello():
 
 def post(request):
     data = json.loads(request.data)
-    return json.dumps({"output":
+    return json.dumps({"outputs":
                        [{"out": data['inputs'][0]['in']}]
                        }, indent=4)
 
