@@ -1,5 +1,6 @@
-from flask import Flask, request
+import os
 import json
+from flask import Flask, request
 app = Flask(__name__)
 
 # {
@@ -56,5 +57,6 @@ def options():
                       indent=4)
 
 if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 5000))
     app.debug = True
-    app.run()
+    app.run(host='0.0.0.0', port=port)
