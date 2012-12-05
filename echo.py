@@ -12,30 +12,26 @@ def hello():
     if request.method == 'OPTIONS':
         return options()
 
+
 def post(request):
     data = json.loads(request.data)
     return json.dumps({"outputs":
                        [{"out": data['inputs'][0]['in']}]
                        }, indent=4)
 
+
 def options():
-    return json.dumps({"name": "Echo",
-                       "description": "An example WebPipe block that provides an echo service.",
-                       "inputs": [
-                           {
-                               "name": "in",
-                               "type": "string",
-                               "description": "String to echo"
-                            }
-                           ],
-                       "outputs": [
-                           {
-                               "name": "out",
-                               "type": "string",
-                               "description": "Echoed string"
-                            }
-                           ]},
-                      indent=4)
+    out = {"name": "Echo",
+           "description": "An example WebPipe block echo service.",
+           "inputs": [
+               {"name": "in",
+                "type": "string",
+                "description": "String to echo"}],
+           "outputs": [
+               {"name": "out",
+                "type": "string",
+                "description": "Echoed string"}]}
+    return json.dumps(out, indent=4)
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
