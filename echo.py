@@ -3,25 +3,6 @@ import json
 from flask import Flask, request
 app = Flask(__name__)
 
-# {
-#   "name": "Echo",
-#   "description": "An example WebPipe block that provides an echo service.",
-#   "inputs": [
-#     {
-#       "name": "in",
-#       "type": "string",
-#       "description": "String to echo."
-#     }
-#   ],
-#   "outputs": [
-#     {
-#       "name": "out",
-#       "type": "string",
-#       "description": "The echoed string."
-#     }
-#   ]
-# }
-
 @app.route("/", methods=['GET', 'POST', 'OPTIONS'])
 def hello():
     if request.method == 'GET':
